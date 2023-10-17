@@ -1,11 +1,3 @@
-
-
-
-
-
-
-
-
 # Use rocker/rstudio as the base image
 FROM rocker/rstudio
 
