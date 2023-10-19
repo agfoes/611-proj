@@ -1,4 +1,5 @@
 
+SHELL: /bin/bash
 
 # Define the target file name and URL
 TARGET_FILE = data.csv
