@@ -1,5 +1,5 @@
 # Use rocker/rstudio as the base image
-FROM rocker/rstudio
+FROM rocker/rstudio:latest
 
 # Accept build argument for USER_ID with a default value
 ARG USER_ID=1000
@@ -10,24 +10,20 @@ RUN current_uid=$(id -u rstudio) && \
         usermod -u $USER_ID rstudio && \
         chown -R rstudio:rstudio /home/rstudio; \
     fi
-
-# Use rocker/verse as the base image
-FROM rocker/verse:latest
-
+    
 # Install system dependencies
 RUN apt-get update && \
     apt-get install -y software-properties-common
 
 # Add Git and Git LFS repositories and install them
-RUN add-apt-repository ppa:git-core/ppa && \
-    curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
-    apt-get update && \
-    apt-get install -y git git-lfs
+# RUN add-apt-repository ppa:git-core/ppa && \
+  #  curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.sh | bash && \
+   # apt-get update && \
+   # apt-get install -y git git-lfs
 
+# Install SSH client
+RUN apt-get update && apt-get install -y openssh-client
 
-
-
-
-
-
+# Install tidyverse and other necessary packages
+RUN R -e "install.packages('tidyverse')"
 
