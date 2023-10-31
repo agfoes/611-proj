@@ -1,5 +1,5 @@
 # Use rocker/rstudio as the base image
-FROM rocker/rstudio:latest
+FROM rocker/verse:latest
 
 # Accept build argument for USER_ID with a default value
 ARG USER_ID=1000
@@ -27,3 +27,5 @@ RUN apt-get update && apt-get install -y openssh-client
 # Install tidyverse and other necessary packages
 RUN R -e "install.packages('tidyverse')"
 
+RUN apt update -y && apt install -y python3-pip
+RUN pip3 install jupyter jupyterlab
