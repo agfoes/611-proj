@@ -2,7 +2,7 @@ library(tidyverse)
 library(dplyr)
 
 # Load the data into R.
-data <- read.csv("~/work/source_data/time_data.csv")
+data <- read.csv("~/work/derived_data/full_time_data")
 # Perform PCA on the data set.
 pca <- prcomp(data)
 # Plot the variance explained by each principal component as a function of the number of components.

@@ -9,9 +9,9 @@ figures/histogram_year.png figures/histogram_day.png:
 
 # Clean and pre-process data for 2020 only. Create first .png of histogram of 
 # frequency of crime by primary.type
-figures/type_histogram_2020.png full_time_data.csv: clean.R \
+figures/type_histogram_2020.png full_time_data.csv: R/clean.R \
 	source_data/data_2020.csv
-	Rscript clean.R
+	Rscript R/clean.R
 
 # Clean up generated figures
 clean:
