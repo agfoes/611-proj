@@ -2,34 +2,44 @@ library(tidyverse)
 library(dplyr)
 
 # Load the data into R.
-data <- read.csv("~/work/derived_data/full_time_data")
+data <- read.csv("~/work/derived_data/full_time_data.csv")
+
+# Filter data to only numeric variables
+char_vars_to_convert <- c("Primary.Type","Arrest","Domestic","FBI.Code")
+pca_data <- data %>%
+  mutate(across(all_of(char_vars_to_convert), as.factor)) %>%
+  mutate(across(all_of(char_vars_to_convert), as.numeric)) %>%
+  distinct() %>%
+  select_if(is.numeric)
+write.csv(pca_data, "~/work/derived_data/pca_data.csv", row.names = FALSE)
+
 # Perform PCA on the data set.
-pca <- prcomp(data)
+pca <- prcomp(pca_data)
 # Plot the variance explained by each principal component as a function of the number of components.
 variance_data <- data.frame(
-  Principal_Component = 1:ncol(data),
+  Principal_Component = 1:ncol(pca_data),
   Cumulative_Variance = cumsum(pca$sdev^2) / sum(pca$sdev^2))
 
-ggplot(variance_data, aes(x = Principal_Component, y = Cumulative_Variance)) +
-  geom_line(color = "blue", size = 1) +
-  geom_point(color = "blue", size = 3) +
+variance_plot <- ggplot(variance_data, aes(x = Principal_Component, y = Cumulative_Variance)) +
+  geom_line(color = "blue") +
+  geom_point(color = "blue") +
   geom_hline(yintercept = 0.95, linetype = "dashed", color = "red") +
   labs(x = "Number of Principal Components",
        y = "Cumulative Proportion of Variance Explained",
        title = "Variance Explained by Principal Components",
        subtitle = "Red dashed line indicates 95% variance explained threshold") +
   theme_minimal()
-ggsave("variance_by_component.png")
+ggsave(variance_plot, file = "~/work/figures/variance_by_component.png")
 
 # Plot PC1 by PC2
 pr12 <- data.frame("PC1" = pca$x[,1], "PC2" = pca$x[,2])
-ggplot(pr12, aes(x = PC1, y = PC2)) +
+plot_comps <- ggplot(pr12, aes(x = PC1, y = PC2)) +
   geom_point() +
   labs(x = "Principal Component 1", y = "Principal Component 2",
        main = "Data Plot on PC1 and PC2") +
   theme_minimal()
-ggsave("data_on_pc1_pc2.png")
+ggsave(plot_comps, file = "~/work/figures/data_on_pc1_pc2.png")
 
 # Extract two densely-populated areas of PC1-by-PC2 plot
-area1 <- pr12 %>% filter(PC1 <= 100 & PC1 >= 75 & PC2 >= 40 & PC2 <= 80)
-area2 <- pr12 %>% filter(PC1 <= -50 & PC1 >= -100 & PC2 >= 0 & PC2 <= 50)
+area1 <- pr12 %>% filter(PC1 <= 4*10^4)
+area2 <- pr12 %>% filter(PC1 >= 4*10^6)
