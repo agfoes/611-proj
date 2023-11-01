@@ -21,6 +21,7 @@ In the command line of the local RStudio window, execute the following commands 
 ```{r}
 make time_figures
 make full_data
+make pca
 ```
 
 To clear all output and start over, execute the following command in the terminal of RStudio:

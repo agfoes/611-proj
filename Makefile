@@ -13,6 +13,12 @@ full_data: \
 	R/clean.R \
 	source_data/data_2020.csv
 	Rscript R/clean.R
+	
+# Run PCA and create associated figures
+pca: \
+	R/pca.R \
+	derived_data/full_time_data.csv
+	Rscript R/pca.R
 
 # Clean up generated figures
 clean:
@@ -20,4 +26,7 @@ clean:
 	rm -f figures/histogram_day.png
 	rm -f figures/type_histogram_2020.png
 	rm -f derived_data/full_time_data.csv
+	rm -f derived_data/pca_data.csv
+	rm -f figures/data_on_pc1_pc2.png
+	rm -f figures/variance_by_component.png
 	
