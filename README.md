@@ -1,8 +1,9 @@
 # BIOS 611 Project
-## Fall 2023
+## Abby Foes
 
 Hello! This is my semester project for BIOS 611 in Fall 2023. My analysis focuses on crime data from the city of Chicago, Illinois between the years 2001 and 2023. I will focus on data from 2020. Variables observed include date of incident, type of crime, precinct, ward, address, crime description, and more. In addition to detailed data on 2020, I will briefly analyze time trends for the entire time-span, focusing on crime frequency, not specific to a certain type. 
 
+### Launch Docker container and RStudio
 To access this analysis, you will need to access Docker and build the container from a terminal with the following commands. 
 
 First, build the Docker container with: 
@@ -14,3 +15,15 @@ Next, for Mac and Linux users, execute the following to launch a local RStudio w
 docker run --rm -v $(pwd):/home/rstudio/work -p 8787:8787 -it 611
 ```
 Next, visit the following address in your preferred browser: http://localhost:8787/ and input the username "rstudio" and copy the password from the terminal in which you executed the previous commands. 
+
+### Build data and create figures
+In the command line of the local RStudio window, execute the following commands to build derived data sets, create figures, and execute R scripts:
+```{r}
+make time_figures
+make full_data
+```
+
+To clear all output and start over, execute the following command in the terminal of RStudio:
+```{r}
+make clean
+```
