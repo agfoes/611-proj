@@ -1,7 +1,7 @@
 # BIOS 611 Project
 ## Abby Foes
 
-Hello! This is my semester project for BIOS 611 in Fall 2023. My analysis focuses on crime data from the city of Chicago, Illinois between the years 2001 and 2023. I will focus on data from 2020. Variables observed include date of incident, type of crime, precinct, ward, address, crime description, and more. In addition to detailed data on 2020, I will briefly analyze time trends for the entire time-span, focusing on crime frequency, not specific to a certain type. 
+Hello! This is my semester project for BIOS 611 in Fall 2023. My analysis focuses on crime data from the city of Chicago, Illinois between the years 2001 and 2023. I will focus on data from 2020. Variables observed include date of incident, type of crime, precinct, ward, address, crime description, and more. In addition to detailed data on 2020, I will briefly analyze time trends for the entire time-span, focusing on crime frequency, not specific to a certain type. The necessary data is already within the Docker container and does not need to be loaded from an external source.
 
 ### Launch Docker container and RStudio
 To access this analysis, you will need to access Docker and build the container from a terminal with the following commands. 
