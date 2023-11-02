@@ -25,5 +25,5 @@ RUN apt-get update && \
 RUN apt-get update && apt-get install -y openssh-client
 
 # Install tidyverse and other necessary packages
-RUN R -e "install.packages('tidyverse')"
+RUN R -e "install.packages('tidyverse','cluster')"
 

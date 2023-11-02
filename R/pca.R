@@ -1,5 +1,6 @@
 library(tidyverse)
 library(dplyr)
+library(cluster)
 
 # Load the data into R.
 data <- read.csv("~/work/derived_data/full_time_data.csv")
@@ -8,9 +9,10 @@ data <- read.csv("~/work/derived_data/full_time_data.csv")
 char_vars_to_convert <- c("Primary.Type","Arrest","Domestic","FBI.Code")
 pca_data <- data %>%
   mutate(across(all_of(char_vars_to_convert), as.factor)) %>%
-  mutate(across(all_of(char_vars_to_convert), as.numeric)) %>%
+  mutate(across(all_of(char_vars_to_convert), as.integer)) %>%
   distinct() %>%
-  select_if(is.numeric)
+  select_if(is.numeric) %>%
+  select(-ID, -Longitude, -Latitude, -X.Coordinate, -Y.Coordinate)
 write.csv(pca_data, "~/work/derived_data/pca_data.csv", row.names = FALSE)
 
 # Perform PCA on the data set.
@@ -40,6 +42,7 @@ plot_comps <- ggplot(pr12, aes(x = PC1, y = PC2)) +
   theme_minimal()
 ggsave(plot_comps, file = "~/work/figures/data_on_pc1_pc2.png")
 
-# Extract two densely-populated areas of PC1-by-PC2 plot
-area1 <- pr12 %>% filter(PC1 <= 4*10^4)
-area2 <- pr12 %>% filter(PC1 >= 4*10^6)
+# K-means to determine and identify clusters
+km <- kmeans(pca$x[,1], centers = 10)
+
+
