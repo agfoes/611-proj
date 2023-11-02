@@ -1,3 +1,6 @@
+# Clustering Homework
+I chose to complete my clustering homework on my project data set, instead of the class assignment. After building and running the Docker container (below), please run ```make full_data``` and ```make pca``` to create two plots for this assignment. Specifically, the plots are variance as a function of number of components and the data graphed as a function of pc1 and pc2. From the latter figure, there are not clear clusters of the data. There do seem to be numerous, small sets of data, but it is unclear if these are significant clusters.
+
 # BIOS 611 Project
 ## Abby Foes
 
