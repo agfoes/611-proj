@@ -25,5 +25,8 @@ RUN apt-get update && \
 RUN apt-get update && apt-get install -y openssh-client
 
 # Install tidyverse and other necessary packages
-RUN R -e "install.packages('tidyverse','cluster')"
+RUN R -e "install.packages('tidyverse')"
 
+# Installations for Python and Jupyter
+RUN apt update -y && apt install -y python3-pip
+RUN pip3 install jupyter jupyterlab
