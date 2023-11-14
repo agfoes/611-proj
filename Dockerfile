@@ -26,6 +26,7 @@ RUN apt-get update && apt-get install -y openssh-client
 
 # Install tidyverse and other necessary packages
 RUN R -e "install.packages('tidyverse')"
+RUN R -e "install.packages('caret')"
 
 # Installations for Python and Jupyter
 RUN apt update -y && apt install -y python3-pip
