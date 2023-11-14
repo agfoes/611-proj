@@ -17,7 +17,14 @@ Next, for Mac and Linux users, execute the following to launch a local RStudio w
 ```
 docker run --rm -v $(pwd):/home/rstudio/work -p 8787:8787 -it 611
 ```
-Next, visit the following address in your preferred browser: http://localhost:8787/ and input the username "rstudio" and copy the password from the terminal in which you executed the previous commands. 
+Next, visit the following address in your preferred browser: http://localhost:8787/ and input the username "rstudio" and password "bios611". 
+
+### Launch Python Jupyter Notebook
+To access the jupyter notebook associated with this project, move to the terminal within the previously opened RStudio window. Run the following command:
+```
+jupyter lab --ip 0.0.0.0 --port 8765
+```
+This command will output a link to follow, granting access to a new tab within your browser of choice.
 
 ### Build data and create figures
 In the command line of the local RStudio window, execute the following commands to build derived data sets, create figures, and execute R scripts:
