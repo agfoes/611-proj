@@ -20,6 +20,12 @@ pca: \
 	derived_data/full_time_data.csv
 	Rscript R/pca.R
 
+# Logistic Regression and Forest Plot
+fplot: \
+	R/model.R \
+	derived_data/full_time_data.csv
+	Rscript R/model.R
+	
 # Clean up generated figures
 clean:
 	rm -f figures/histogram_year.png
