@@ -5,7 +5,7 @@ library(ggplot2)
 library(lubridate)
 
 # Clean/Process Data
-data <- read.csv("~/work/proj/source_data/data_2020.csv")
+data <- read.csv("~/work/source_data/data_2020.csv")
 
 # Extract and reformat date/time information
 time_data <- data.frame(Date_Time = data$Date)
@@ -30,11 +30,11 @@ frequency_type <- ggplot(data, aes(x = Primary.Type)) +
        x = "Type of Crime",
        y = "Frequency") +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
-ggsave(frequency_type, filename = "~/work/proj/figures/type_histogram_2020.png")
+ggsave(frequency_type, filename = "~/work/figures/type_histogram_2020.png")
 
 # Convert data to factors as needed or make indicator variables as needed
 
 # Save data created to derived_data
-write.csv(full_data, "~/work/proj/derived_data/full_time_data.csv", row.names = FALSE)
+write.csv(full_data, "~/work/derived_data/full_time_data.csv", row.names = FALSE)
 
 

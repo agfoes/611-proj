@@ -3,7 +3,7 @@ library(caret)
 
 # Model to predict crime type
 
-data <- read.csv("~/work/proj/derived_data/full_time_data.csv")
+data <- read.csv("~/work/derived_data/full_time_data.csv")
 
 model_data <- data.frame(
   primtype = as.numeric(factor(data$Primary.Type, levels = unique(data$Primary.Type))),
@@ -21,4 +21,4 @@ set.seed(123)
 train_control <- trainControl(method = "cv", number = 10)
 model <- train(primtype ~.,data = model_data, trControl = train_control, method = "lm")
 
-write.csv(model_data, "~/work/proj/derived_data/model_data", row.names = FALSE)
+write.csv(model_data, "~/work/derived_data/model_data", row.names = FALSE)
