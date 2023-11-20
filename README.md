@@ -32,6 +32,7 @@ In the command line of the local RStudio window, execute the following commands 
 make time_figures
 make full_data
 make pca
+make fplot
 ```
 
 To clear all output and start over, execute the following command in the terminal of RStudio:
