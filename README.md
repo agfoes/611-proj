@@ -17,7 +17,7 @@ Next, for Mac and Linux users, execute the following to launch a local RStudio w
 ```
 docker run --rm -v $(pwd):/home/rstudio/work -p 8787:8787 -it 611
 ```
-Next, visit the following address in your preferred browser: http://localhost:8787/ and input the username "rstudio" and password "bios611". 
+Next, visit the following address in your preferred browser: http://localhost:8787/ and input the username "rstudio" and password "611proj". 
 
 ### Launch Python Jupyter Notebook
 To access the jupyter notebook associated with this project, move to the terminal within the previously opened RStudio window. Run the following command:
