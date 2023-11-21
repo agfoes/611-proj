@@ -26,6 +26,12 @@ fplot: \
 	derived_data/full_time_data.csv
 	Rscript R/model.R
 	
+	
+report: \
+	
+	
+	
+	
 # Clean up generated figures
 clean:
 	rm -f figures/histogram_year.png
@@ -35,4 +41,5 @@ clean:
 	rm -f derived_data/pca_data.csv
 	rm -f figures/data_on_pc1_pc2.png
 	rm -f figures/variance_by_component.png
+	rm -f figures/fplot.png
 	
