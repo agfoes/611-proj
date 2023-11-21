@@ -5,4 +5,13 @@ date: "`r Sys.Date()`"
 output: html_document
 ---
 
+This is my semester project for BIOS 611 in Fall 2023. My analysis focuses on crime data from the city of Chicago, Illinois between the years 2001 and 2023. I will focus on data from 2020. Variables observed include date of incident, type of crime, precinct, ward, address, crime description, and more. In addition to detailed data on 2020, I will briefly analyze time trends for the entire time-span, focusing on crime frequency, not specific to a certain type.
 
+
+![Histogram of frequency of crimes by year between 2018 and 2023, irrespective of crime type.](~/work/figures/histogram_year.png)
+![Histogram of frequency of crimes by day of month, combined from years 2018 to 2023, irrespective of crime type.](~/work/figures/histogram_day.png)
+![Histogram of frequency of crime type for year 2020 only.](~/work/figures/type_histogram_2020.png)
+![PCA yielded no useful clustering of data.](~/work/figures/data_on_pc1_pc2.png)
+
+![Percent of variance contained in each principal component. Red dashed line indicative of 95% of variance.](~/work/figures/variance_by_component.png)
+![Forest Plot of predictors for crime primary type from logistic regression.](~/work/figures/fplot.png)
