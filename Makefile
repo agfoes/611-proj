@@ -26,7 +26,6 @@ fplot: \
 	derived_data/full_time_data.csv
 	Rscript R/model.R
 	
-	
 report: \
 	time_figures \
 	full_data \
@@ -34,17 +33,12 @@ report: \
 	fplot \
 	report.Rmd
 		Rscript -e "rmarkdown::render('report.Rmd',output_format='html_document')"
-	
 
 # Clean up generated figures
 clean:
-	rm -f figures/histogram_year.png
-	rm -f figures/histogram_day.png
-	rm -f figures/type_histogram_2020.png
-	rm -f derived_data/full_time_data.csv
-	rm -f derived_data/pca_data.csv
-	rm -f figures/data_on_pc1_pc2.png
-	rm -f figures/variance_by_component.png
-	rm -f figures/fplot.png
-	rm -f report.html
+	rm -rf figures
+	rm -rf derived_data
+	rm -rf report.html
+	mkdir -p figures
+	mkdir -p derived_data
 	
