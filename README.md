@@ -33,3 +33,8 @@ To clear all output and start over, execute the following command in the termina
 ```{r}
 make clean
 ```
+
+To view the final report as an html file, execute the following command in the RStudio terminal:
+```
+make report
+```

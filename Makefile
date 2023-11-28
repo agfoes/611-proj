@@ -28,12 +28,10 @@ fplot: \
 	
 	
 report: \
-	figures/histogram_year.png \
-	figures/histogram_day.png \
-	figures/type_histogram_2020.png \
-	figures/variance_by_component.png \
-	figures/data_on_pc1_pc2.png \
-	figures/fplot.png \
+	time_figures \
+	full_data \
+	pca \
+	fplot \
 	report.Rmd
 		Rscript -e "rmarkdown::render('report.Rmd',output_format='html_document')"
 	
