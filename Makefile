@@ -48,4 +48,5 @@ clean:
 	rm -f figures/data_on_pc1_pc2.png
 	rm -f figures/variance_by_component.png
 	rm -f figures/fplot.png
+	rm -f report.html
 	
