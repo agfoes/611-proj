@@ -28,10 +28,16 @@ fplot: \
 	
 	
 report: \
+	figures/histogram_year.png \
+	figures/histogram_day.png \
+	figures/type_histogram_2020.png \
+	figures/variance_by_component.png \
+	figures/data_on_pc1_pc2.png \
+	figures/fplot.png \
+	report.Rmd
+		Rscript -e "rmarkdown::render('report.Rmd',output_format='html_document')"
 	
-	
-	
-	
+
 # Clean up generated figures
 clean:
 	rm -f figures/histogram_year.png
