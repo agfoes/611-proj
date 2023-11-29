@@ -21,6 +21,11 @@ Next, visit the following address in your preferred browser: http://localhost:87
 
 
 ### Build data and create figures
+In order to properly execute any make commands and create desired figures, data, and reports, start by typing the following command in the terminal of RStudio:
+```
+make clean
+```
+
 In the command line of the local RStudio window, execute the following commands to build derived data sets, create figures, and execute R scripts:
 ```{r}
 make time_figures
@@ -34,7 +39,8 @@ To clear all output and start over, execute the following command in the termina
 make clean
 ```
 
-To view the final report as an html file, execute the following command in the RStudio terminal:
+To view the final report as an html file, execute the following commands in the RStudio terminal:
 ```
+make clean
 make report
 ```
