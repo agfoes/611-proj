@@ -9,8 +9,10 @@ Hello! This is my semester project for BIOS 611 in Fall 2023. My analysis focuse
 ### Launch Docker container and RStudio
 To access this analysis, you will need to access Docker and build the container from a terminal with the following commands.
 
-First, build the Docker container with: 
+First, clone my GitHub repository and build the Docker container with: 
 ```
+git clone https://github.com/agfoes/611-proj
+cd 611-proj/
 docker build . --build-arg USER_ID=$(id -u) -t 611
 ```
 Next, for Mac and Linux users, execute the following to launch a local RStudio window:

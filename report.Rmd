@@ -10,15 +10,56 @@ knitr::opts_chunk$set(fig.show='hide', out.width="25%", fig.width=3, fig.height=
 
 This is my semester project for BIOS 611 in Fall 2023. My analysis focuses on crime data from the city of Chicago, Illinois between the years 2001 and 2023. I will focus on data from 2020. Variables observed include date of incident, type of crime, precinct, ward, address, crime description, and more. In addition to detailed data on 2020, I will briefly analyze time trends for the entire time-span, focusing on crime frequency, not specific to a certain type.
 
+To begin, I wanted to see if there was an overall change in the frequency of crimes (irrespective of the type of crime) by year from 2018 to 2023. To do so, I created a frequency histogram to see the change in crime count per year. As seen below, the overall crime rate tends to decrease with year, with 2022 as an exception. 2020 and 2021 have markably lower crime rates than the previous two years, likely due to the COVID-19 pandemic and lockdowns. 2022 saw the opening of many public areas and the return of large events and gatherings, again likely associated with lessening COVID-19 restrictions. 
 
 ![Histogram of frequency of crimes by year between 2018 and 2023, irrespective of crime type.](figures/histogram_year.png){width=25%}
+
+Between 2018 and 2023, I wanted to determine if there was a certain day of the month which had an increase in crimes, again irrespective of crime type. The frequency histogram below reports the average number of crimes per day of the month over all six years of interest. While there appears to be a marked decrease on day 31, it is important to remember that not all months have 31 days. However, the peak on day 1 of the month is interesting. Further study into socioeconomic factors of the city may reveal motivations related to the beginning of months in these years. 
+
 ![Histogram of frequency of crimes by day of month, combined from years 2018 to 2023, irrespective of crime type.](figures/histogram_day.png){width=25%}
+
+Now focusing only on 2020 (to reduce computational load), I wanted to determine which types of crimes were most frequent. The frequency histogram below reveals the most frequent and infrequent crime types in all of 2020. 
+
 ![Histogram of frequency of crime type for year 2020 only.](figures/type_histogram_2020.png){width=25%}
-![PCA plotted by primary crime type.](figures/data_on_pc1_pc2.png){width=25%}
-![PCA plotted by district.](figures/data_on_pc1_pc2_v2.png){width=25%}
-![PCA plotted by hour.](figures/data_on_pc1_pc2_v3.png){width=25%}
 
+Next, I conducted principal component analysis. To do so, I selected data that was numeric (or integer) values and created factors out of categorical variables that I was interested in included in the analysis. Specifically, PCA was conducted considering the following variables:
 
+- Factor variables
+  - primary crime type
+  - domestic
+  - FBI code
+  - domestic
+- Numeric variables
+  - arrest
+  - beat
+  - district
+  - ward
+  - community area
+  - x coordinate
+  - y coordinate
+  - year
+  - month
+  - day
+  - hour
+  
+After running PCA, I determined the percent of variance contained by each principal component. The following graph shows that nearly all of the variance is contained within the first two components. 
 
 ![Percent of variance contained in each principal component. Red dashed line indicative of 95% of variance.](figures/variance_by_component.png){width=25%}
+
+Next, I plotted the data on axes of the first two principal components. To determine if there were obvious variable attributes of each observation that determined the weight of principal components, I assigned various color labels. First, I labeled data points by color as an indicator of primary crime type. The plot below shows that there is no obvious clustering of the data by primary crime type. 
+
+![PCA plotted by primary crime type.](figures/data_on_pc1_pc2.png){width=25%}
+
+Next, I colored the plot by district. While district has many different values, there is a clear trend in the grouping of data in terms of district on a plot of the first two principal components. 
+
+![PCA plotted by district.](figures/data_on_pc1_pc2_v2.png){width=25%}
+
+Finally, I colored the PCA plot by hour of the crime. This revealed no obvious trend or clustering of the data. 
+
+![PCA plotted by hour.](figures/data_on_pc1_pc2_v3.png){width=25%}
+
+Intuition says that we should be able to predict the primary crime type as a function of the various other attributes in this data set. To attempt this, I ran a logistic regression model with k-fold cross-validation to optimize coefficients. The resulting model surprised me. The coefficients found were mostly insignificant in predicting crime type. To summarize, I calculated odds ratios with variable attributes as confounders to determine which have significant impacts on primary crime type. The forest plot below shows these odds ratios (with a red dashed line at 1) and associated 95% confidence intervals. District is a clear confounding variable, with hour and domestic with potential (within 95% CI) confounding.
+
 ![Forest Plot of predictors for crime primary type from logistic regression.](figures/fplot.png){width=25%}
+
+Next steps: Following this analysis, next steps would include further modeling and clustering. Using the principal components previously determined, I should run k-means clustering to determine any clusters. If this reveals none, it is possible that alternative dimension reduction methods could prove useful (such as nnmf). Further clustering could allow for a more insightful model and identification of variables useful in the prediction of primary crime type. 
