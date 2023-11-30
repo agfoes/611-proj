@@ -33,7 +33,7 @@ report: \
 	fplot \
 	report.Rmd
 		Rscript -e "rmarkdown::render('report.Rmd',output_format='html_document')"
-
+		
 # Clean up generated figures
 clean:
 	rm -rf figures
