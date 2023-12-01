@@ -26,11 +26,17 @@ fplot: \
 	derived_data/full_time_data.csv
 	Rscript R/model.R
 	
+geo: \
+	R/geo.R \
+	derived_data/full_time_data.csv
+	Rscript R/geo.R
+	
 report: \
 	time_figures \
 	full_data \
 	pca \
 	fplot \
+	geo \
 	report.Rmd
 		Rscript -e "rmarkdown::render('report.Rmd',output_format='html_document')"
 		
