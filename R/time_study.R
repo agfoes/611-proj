@@ -45,3 +45,13 @@ day_frequency <- ggplot(data, aes(x = day)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 
 ggsave(day_frequency, filename = "figures/histogram_day.png")
+
+# Figure of frequency of crimes by day of month
+hour_frequency <- ggplot(data, aes(x = hour)) +
+  geom_bar(fill = "skyblue", color = "black") +
+  labs(title = "Frequency of Crimes by Hour",
+       x = "Hour",
+       y = "Frequency") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+ggsave(hour_frequency, filename = "figures/histogram_hour.png")

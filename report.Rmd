@@ -21,10 +21,20 @@ To begin, I wanted to see if there was an overall change in the frequency of cri
 Between 2018 and 2023, I wanted to determine if there was a certain day of the month which had an increase in crimes, again irrespective of crime type. The frequency histogram below reports the average number of crimes per day of the month over all six years of interest. While there appears to be a marked decrease on day 31, it is important to remember that not all months have 31 days. However, the peak on day 1 of the month is interesting. Further study into socioeconomic factors of the city may reveal motivations related to the beginning of months in these years. 
 
 ![Histogram of frequency of crimes by day of month, combined from years 2018 to 2023, irrespective of crime type.](figures/histogram_day.png){width=50%}
+Additionally, crimes rates by hour of the day is a figure of interest.
+
+![Histogram of frequency of crimes by hour of the day, combined from years 2018 to 2023, irrespective of crime type.](figures/histogram_hour.png){width=50%}
+
 
 Now focusing only on 2020 (to reduce computational load), I wanted to determine which types of crimes were most frequent. The frequency histogram below reveals the most frequent and infrequent crime types in all of 2020. 
 
 ![Histogram of frequency of crime type for year 2020 only.](figures/type_histogram_2020.png){width=50%}
+#### Geographic Figures
+
+I plotted the top 5 most frequent crimes of 2020 by their longitude and latitude and color-coded by primary type. It is interesting to note the high concentration of theft around the upper loop of Chicago, where most high-end stores can be found. Additionally, violent crimes are increased on the west and south sides of the city (which would not surprise any locals).
+
+![Longitudinal/Latitudinal Plot of Top 5 Crime Types.](figures/geo.png){width=50%}
+
 
 #### Principal Component Analysis
 
@@ -41,8 +51,6 @@ Next, I conducted principal component analysis. To do so, I selected data that w
   - district
   - ward
   - community area
-  - x coordinate
-  - y coordinate
   - year
   - month
   - day

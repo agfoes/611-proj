@@ -12,7 +12,7 @@ pca_data <- data %>%
   mutate(across(all_of(char_vars_to_convert), as.integer)) %>%
   distinct() %>%
   select(is.factor, is.integer) %>%
-  select(- ID)
+  select(- ID, - X.Coordinate, - Y.Coordinate)
 write.csv(pca_data, "~/work/derived_data/pca_data.csv", row.names = FALSE)
 
 # Perform PCA on the data set.
