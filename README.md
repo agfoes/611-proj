@@ -17,13 +17,18 @@ docker build . --build-arg USER_ID=$(id -u) -t 611
 ```
 Next, for Mac and Linux users, execute the following to launch a local RStudio window:
 ```
-docker run --rm -v $(pwd):/home/rstudio/work -p 8787:8787 -it 611
+docker run -p 8765:8765 -v $(pwd):/home/rstudio/work -e PASSWORD=611proj -v $HOME/.ssh:/home/rstudio/.ssh -v $HOME/.git:/home/rstudio/.git -p 8787:8787 -it 611
 ```
 Next, visit the following address in your preferred browser: http://localhost:8787/ and input the username "rstudio" and password "611proj".
 
 
 ### Build data and create figures
 In order to properly execute any make commands and create desired figures, data, and reports, start by typing the following command in the terminal of RStudio:
+```
+cd work
+```
+
+Then, execute the following: 
 ```
 make clean
 ```
