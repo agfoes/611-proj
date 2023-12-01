@@ -12,12 +12,14 @@ To access this analysis, you will need to access Docker and build the container 
 First, clone my GitHub repository and build the Docker container with: 
 ```
 git clone https://github.com/agfoes/611-proj
+```
+```
 cd 611-proj/
 docker build . --build-arg USER_ID=$(id -u) -t 611
 ```
 Next, for Mac and Linux users, execute the following to launch a local RStudio window:
 ```
-docker run -p 8765:8765 -v $(pwd):/home/rstudio/work -e PASSWORD=611proj -v $HOME/.ssh:/home/rstudio/.ssh -v $HOME/.git:/home/rstudio/.git -p 8787:8787 -it 611
+docker run -v $(pwd):/home/rstudio/work -e PASSWORD=611proj -v $HOME/.ssh:/home/rstudio/.ssh -v $HOME/.git:/home/rstudio/.git -p 8787:8787 -it 611
 ```
 Next, visit the following address in your preferred browser: http://localhost:8787/ and input the username "rstudio" and password "611proj".
 
@@ -27,12 +29,10 @@ In order to properly execute any make commands and create desired figures, data,
 ```
 cd work
 ```
-
 Then, execute the following: 
 ```
 make clean
 ```
-
 In the command line of the local RStudio window, execute the following commands to build derived data sets, create figures, and execute R scripts:
 ```{r}
 make time_figures
@@ -40,12 +40,10 @@ make full_data
 make pca
 make fplot
 ```
-
 To clear all output and start over, execute the following command in the terminal of RStudio:
 ```{r}
 make clean
 ```
-
 To view the final report as an html file, execute the following commands in the RStudio terminal:
 ```
 make clean
